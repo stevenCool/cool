@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class ViewController;
+#import "ViewController.h"
+#import "DDLog.h"
+#import "DDTTYLogger.h"
+static const int ddLogLevel = LOG_LEVEL_INFO;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+    ViewController* viewController;
+}
 
 @property (strong, nonatomic) UIWindow *window;
-
 @property (strong, nonatomic) ViewController *viewController;
 
 @end
