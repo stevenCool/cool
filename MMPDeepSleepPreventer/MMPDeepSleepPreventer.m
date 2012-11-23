@@ -73,22 +73,42 @@
 	[self mmp_setUpAudioSession];
 	
 	// Set up path to sound file
-	NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"MMPSilence"
-	                                                          ofType:@"wav"];
+//	NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"MMPSilence"
+//	                                                          ofType:@"wav"];
+//	
+//	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+//	
+//	// Set up audio player with sound file
+//	audioPlayer_ = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL
+//	                                                      error:nil];
+//	[fileURL release];
+//	
+//	[self.audioPlayer prepareToPlay];
+//	
+//	// You may want to set this to 0.0 even if your sound file is silent.
+//	// I don't know exactly, if this affects battery life, but it can't hurt.
+//	[self.audioPlayer setVolume:0.0];
 	
-	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
-	
-	// Set up audio player with sound file
-	audioPlayer_ = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL
-	                                                      error:nil];
-	[fileURL release];
-	
-	[self.audioPlayer prepareToPlay];
-	
-	// You may want to set this to 0.0 even if your sound file is silent.
-	// I don't know exactly, if this affects battery life, but it can't hurt.
-	[self.audioPlayer setVolume:0.0];
-	
+    NSURL *audioFileLocationURL = [[NSBundle mainBundle] URLForResource:@"MMPSilence" withExtension:@"wav"];
+    NSLog(@"%@",audioFileLocationURL);
+    
+    NSError *error;
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:audioFileLocationURL error:&error];
+    [self.audioPlayer setNumberOfLoops:-1];
+    [self.audioPlayer setVolume:1.0];
+    
+    if (error) {
+        NSLog(@"%@", error);
+    } else {
+        //Make sure the system follows our playback status
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+        [[AVAudioSession sharedInstance] setActive: YES error: nil];
+        
+        //Load the audio into memory
+        [self.audioPlayer prepareToPlay];
+    }
+
+    
     return self;
 }
 
@@ -113,8 +133,12 @@
 	
 	// We create a new repeating timer, that begins firing immediately and then every five seconds afterwards.
 	// Every time it fires, it calls -mmp_playPreventSleepSound.
+    
+    self.audioPlayer.numberOfLoops = -1;
+    [self.audioPlayer play];
+    
 	NSTimer *preventSleepTimer = [[NSTimer alloc] initWithFireDate:[NSDate date]
-	                                                      interval:5.0
+	                                                      interval:3.0
 	                                                        target:self
 	                                                      selector:@selector(mmp_playPreventSleepSound)
 	                                                      userInfo:nil
@@ -140,7 +164,8 @@
 
 - (void)mmp_playPreventSleepSound
 {
-	[self.audioPlayer play];
+//	[self.audioPlayer play];
+    NSLog(@"sound playing");
 }
 
 

@@ -13,6 +13,7 @@
 
 @end
 
+static MMPDeepSleepPreventer *sleepPreventer;
 @implementation ViewController
 @synthesize sinaweibo = sinaweibo;
 
@@ -34,7 +35,13 @@
     if ([sinaweibo isAuthValid]) {
         [self sinaweiboDidLogIn:sinaweibo];
     }
+   
 
+//    if (!sleepPreventer) {        
+//        sleepPreventer = [[MMPDeepSleepPreventer alloc] init];
+//    }
+//    [sleepPreventer startPreventSleep];
+    
 //    dispatch_queue_t mainQueue = dispatch_get_main_queue();
 //    
 //    asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:mainQueue];
@@ -124,5 +131,89 @@
 	//self.viewController.label.text = @"Disconnected";
 }
 
+
+-(IBAction)accessAddressbook:(id)sender
+{
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 60000
+    __block ViewController *controller = self;
+    
+    // Request authorization to Address Book
+    ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
+    
+    if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
+        ABAddressBookRequestAccessWithCompletion(addressBookRef,^(bool granted, CFErrorRef error) {
+            if (granted)
+                [controller outputPhoneNumber];
+        });
+    } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
+        // The user has previously given access, add the contact
+        [self outputPhoneNumber];
+    } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusDenied) {
+        [self showAlertView];
+    }
+    
+#else
+    [self outputPhoneNumber];
+#endif
+    
+//    addressBook = ABAddressBookCreate();
+//    __block BOOL accessGranted = NO;
+//    if (ABAddressBookRequestAccessWithCompletion != NULL) { // we're on iOS 6
+//        dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+//        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+//            accessGranted = granted;
+//            dispatch_semaphore_signal(sema);
+//        });
+//        dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+//        //dispatch_release(sema);
+//    }
+//    else { // we're on iOS 5 or older
+//        accessGranted = YES;
+//        [self outputPhoneNumber];
+//    }
+//    
+//    if (accessGranted) {
+//        // Do whatever you want here.
+//        [self outputPhoneNumber];
+//    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+//    if ([alertView.message isEqualToString:@"use contact"] || alertView.message == @"use contact") {
+//        accessGranted = YES;
+//        [self outputPhoneNumber];
+//    }
+}
+
+- (void)outputPhoneNumber{
+    NSMutableArray *dataSource = [[NSMutableArray alloc]init]; // dataSouce is delared in .h file
+    NSMutableArray *allPeople = (__bridge NSMutableArray *)ABAddressBookCopyArrayOfAllPeople(addressBook);
+    int nPeople = ABAddressBookGetPersonCount(addressBook);
+    
+    NSMutableArray *arrContacts = [[NSMutableArray alloc] init];
+    
+    for(int i=0; i < nPeople; i++ ){
+        ABRecordRef person = (__bridge ABRecordRef)([allPeople objectAtIndex:i]);
+        NSString *name = @"";
+        
+        if(ABRecordCopyValue(person, kABPersonFirstNameProperty) != NULL)
+            name = [[NSString stringWithFormat:@"%@", ABRecordCopyValue(person, kABPersonFirstNameProperty)] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        [dataSource addObject: name];
+        
+        ABMultiValueRef phoneNumberProperty = ABRecordCopyValue(person, kABPersonPhoneProperty);
+        NSArray* _phoneNumbers = (__bridge NSArray*)ABMultiValueCopyValueAtIndex(phoneNumberProperty, 0);
+        //CFRelease(phoneNumberProperty);
+        NSLog(@"Phone numbers = %@", _phoneNumbers);
+        [arrContacts addObject:_phoneNumbers];
+    }
+    NSLog(@"Phone numbers : %@",arrContacts);
+
+}
+
+-(void)showAlertView{
+    UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"Deny Access" message:@"Deny" delegate:self cancelButtonTitle:nil otherButtonTitles:@"cancel", nil];
+    [alertView show];
+}
 
 @end

@@ -36,9 +36,10 @@
 		B08DAB841648E442003B43CA /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = B08DAB661648E0D8003B43CA /* GCDAsyncSocket.m */; };
 		B08FBF4016509C4800D555DF /* ViewController+sina.m in Sources */ = {isa = PBXBuildFile; fileRef = B08FBF3F16509C4800D555DF /* ViewController+sina.m */; };
 		B0919A30165B53FA007A594B /* MMPDeepSleepPreventer.m in Sources */ = {isa = PBXBuildFile; fileRef = B0919A2C165B53FA007A594B /* MMPDeepSleepPreventer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B0919A31165B53FA007A594B /* MMPSilence.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0919A2D165B53FA007A594B /* MMPSilence.wav */; };
 		B0919A34165B547A007A594B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0919A33165B547A007A594B /* AVFoundation.framework */; };
 		B0919A36165B549A007A594B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0919A35165B549A007A594B /* AudioToolbox.framework */; };
+		B0919A3D165B6FA5007A594B /* MMPSilence.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0919A3C165B6FA5007A594B /* MMPSilence.wav */; };
+		B09E8740165E10AB00113B9D /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09E873F165E10AB00113B9D /* AddressBook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,9 +91,10 @@
 		B08FBF3F16509C4800D555DF /* ViewController+sina.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+sina.m"; sourceTree = "<group>"; };
 		B0919A2B165B53FA007A594B /* MMPDeepSleepPreventer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPDeepSleepPreventer.h; sourceTree = "<group>"; };
 		B0919A2C165B53FA007A594B /* MMPDeepSleepPreventer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPDeepSleepPreventer.m; sourceTree = "<group>"; };
-		B0919A2D165B53FA007A594B /* MMPSilence.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MMPSilence.wav; sourceTree = "<group>"; };
 		B0919A33165B547A007A594B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B0919A35165B549A007A594B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B0919A3C165B6FA5007A594B /* MMPSilence.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MMPSilence.wav; sourceTree = "<group>"; };
+		B09E873F165E10AB00113B9D /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B09E8740165E10AB00113B9D /* AddressBook.framework in Frameworks */,
 				B0919A36165B549A007A594B /* AudioToolbox.framework in Frameworks */,
 				B0919A34165B547A007A594B /* AVFoundation.framework in Frameworks */,
 				B08DAB831648E337003B43CA /* Security.framework in Frameworks */,
@@ -138,6 +141,7 @@
 		B0813B911639208B0027F4F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B09E873F165E10AB00113B9D /* AddressBook.framework */,
 				B0919A35165B549A007A594B /* AudioToolbox.framework */,
 				B0919A33165B547A007A594B /* AVFoundation.framework */,
 				B08DAB821648E337003B43CA /* Security.framework */,
@@ -245,7 +249,7 @@
 			children = (
 				B0919A2B165B53FA007A594B /* MMPDeepSleepPreventer.h */,
 				B0919A2C165B53FA007A594B /* MMPDeepSleepPreventer.m */,
-				B0919A2D165B53FA007A594B /* MMPSilence.wav */,
+				B0919A3C165B6FA5007A594B /* MMPSilence.wav */,
 			);
 			path = MMPDeepSleepPreventer;
 			sourceTree = "<group>";
@@ -308,7 +312,7 @@
 				B0813BAF1639208B0027F4F8 /* ViewController.xib in Resources */,
 				B0813BC2163921070027F4F8 /* SinaWeibo.bundle in Resources */,
 				B08DAB7F1648E215003B43CA /* README.txt in Resources */,
-				B0919A31165B53FA007A594B /* MMPSilence.wav in Resources */,
+				B0919A3D165B6FA5007A594B /* MMPSilence.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

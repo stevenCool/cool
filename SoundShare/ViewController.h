@@ -10,6 +10,8 @@
 #import "SinaWeibo.h"
 #import "SinaWeiboRequest.h"
 #import "GCDAsyncSocket.h"
+#import "MMPDeepSleepPreventer.h"
+#import <AddressBook/AddressBook.h>
 
 #define HOST @"192.168.1.1"
 #define PORT 1010
@@ -39,6 +41,10 @@
     
     SinaWeibo *sinaweibo;
     
+    ABAddressBookRef addressBook;
+    
+    //MMPDeepSleepPreventer *sleepPreventer;
+    
     IBOutlet UIButton *loginButton;
     IBOutlet UIButton *logoutButton;
     
@@ -52,6 +58,8 @@
 }
 
 @property (readonly, nonatomic) SinaWeibo *sinaweibo;
+-(void)outputPhoneNumber;
+-(void)showAlertView;
 
 @end
 
@@ -60,5 +68,4 @@
 -(IBAction)logoutButtonPressed:(id)sender;
 -(IBAction)postStatusButtonPressed:(id)sender;
 -(IBAction)postImageStatusButtonPressed:(id)sender;
-
 @end
