@@ -10,7 +10,7 @@
 
 @implementation AppDelegate
 @synthesize window = _window;
-@synthesize viewController = _viewController;
+@synthesize mainViewController = _mainViewController;
 
 - (id)init
 {
@@ -26,8 +26,9 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
+    self.mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+    UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
+    self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -62,12 +63,12 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    return [self.viewController.sinaweibo handleOpenURL:url];
+    return [[Utility GetInstance].sinaweibo handleOpenURL:url];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    return [self.viewController.sinaweibo handleOpenURL:url];
+    return [[Utility GetInstance].sinaweibo handleOpenURL:url];
 }
 
 @end

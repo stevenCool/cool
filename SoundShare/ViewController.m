@@ -7,36 +7,23 @@
 //
 
 #import "ViewController.h"
-#import "AppDelegate.h"
 
 @interface ViewController ()
 
 @end
 
-static MMPDeepSleepPreventer *sleepPreventer;
+//static MMPDeepSleepPreventer *sleepPreventer;
 @implementation ViewController
-@synthesize sinaweibo = sinaweibo;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    sinaweibo = [[SinaWeibo alloc] initWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:kAppRedirectURI andDelegate:self];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *sinaweiboInfo = [defaults objectForKey:@"SinaWeiboAuthData"];
-    if ([sinaweiboInfo objectForKey:@"AccessTokenKey"] && [sinaweiboInfo objectForKey:@"ExpirationDateKey"] && [sinaweiboInfo objectForKey:@"UserIDKey"])
-    {
-        sinaweibo.accessToken = [sinaweiboInfo objectForKey:@"AccessTokenKey"];
-        sinaweibo.expirationDate = [sinaweiboInfo objectForKey:@"ExpirationDateKey"];
-        sinaweibo.userID = [sinaweiboInfo objectForKey:@"UserIDKey"];
-    }
-    
-    if ([sinaweibo isAuthValid]) {
-        [self sinaweiboDidLogIn:sinaweibo];
-    }
-   
 
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(NotifyRefresh:)
+                                                 name:NotificationNeedRefresh
+                                               object:nil];
 //    if (!sleepPreventer) {        
 //        sleepPreventer = [[MMPDeepSleepPreventer alloc] init];
 //    }
@@ -64,6 +51,21 @@ static MMPDeepSleepPreventer *sleepPreventer;
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    [[NSNotificationCenter defaultCenter]removeObserver:self
+												   name:NotificationNeedRefresh
+												 object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    if ([[Utility GetInstance] isWeiboAvailable]) {
+        label.text = [Utility GetInstance].sinaweibo.userID;;
+    }
+    else{
+        label.text = NoLoginLabel;
+    }
+    
+    [super viewWillAppear:animated];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -187,6 +189,7 @@ static MMPDeepSleepPreventer *sleepPreventer;
 }
 
 - (void)outputPhoneNumber{
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
     NSMutableArray *dataSource = [[NSMutableArray alloc]init]; // dataSouce is delared in .h file
     NSMutableArray *allPeople = (__bridge NSMutableArray *)ABAddressBookCopyArrayOfAllPeople(addressBook);
     int nPeople = ABAddressBookGetPersonCount(addressBook);
@@ -215,5 +218,11 @@ static MMPDeepSleepPreventer *sleepPreventer;
     UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"Deny Access" message:@"Deny" delegate:self cancelButtonTitle:nil otherButtonTitles:@"cancel", nil];
     [alertView show];
 }
+
+- (void)NotifyRefresh:(NSNotification *)notification{
+    //NSDictionary* dic = [notification userInfo];
+    [self viewWillAppear:NO];
+}
+
 
 @end
