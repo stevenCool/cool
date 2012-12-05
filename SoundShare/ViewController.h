@@ -11,6 +11,7 @@
 #import "GCDAsyncSocket.h"
 #import "MMPDeepSleepPreventer.h"
 
+//#define HOST @"192.168.100.100"
 #define HOST @"192.168.1.1"
 #define PORT 1010
 #define NoLoginLabel   @"You need to Log in first!"
@@ -27,10 +28,15 @@
     IBOutlet UILabel  *label;
     IBOutlet UIButton *shareButton;
     
+    NSString *voiceString;
 }
 
 -(void)outputPhoneNumber;
 -(void)showAlertView;
+
+- (IBAction)Done:(id)sender;
+- (IBAction)ConnectToServer:(id)sender;
+- (IBAction)DisconnectFromServer:(id)sender;
 
 @end
 

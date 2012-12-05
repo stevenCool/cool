@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B02461BE166F3290006AE3DA /* Utility+sina.m in Sources */ = {isa = PBXBuildFile; fileRef = B02461BD166F3290006AE3DA /* Utility+sina.m */; };
+		B02461C1166F32B7006AE3DA /* Utility+socket.m in Sources */ = {isa = PBXBuildFile; fileRef = B02461C0166F32B7006AE3DA /* Utility+socket.m */; };
+		B02461C5166F3AE9006AE3DA /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B02461C3166F3AE9006AE3DA /* SettingViewController.m */; };
+		B02461C6166F3AE9006AE3DA /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B02461C4166F3AE9006AE3DA /* SettingViewController.xib */; };
 		B0813B931639208B0027F4F8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0813B921639208B0027F4F8 /* UIKit.framework */; };
 		B0813B951639208B0027F4F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0813B941639208B0027F4F8 /* Foundation.framework */; };
 		B0813B971639208B0027F4F8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0813B961639208B0027F4F8 /* CoreGraphics.framework */; };
@@ -46,6 +50,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B02461BB166F2ADD006AE3DA /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		B02461BD166F3290006AE3DA /* Utility+sina.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Utility+sina.m"; sourceTree = "<group>"; };
+		B02461C0166F32B7006AE3DA /* Utility+socket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Utility+socket.m"; sourceTree = "<group>"; };
+		B02461C2166F3AE9006AE3DA /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		B02461C3166F3AE9006AE3DA /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		B02461C4166F3AE9006AE3DA /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		B0813B8E1639208B0027F4F8 /* SoundShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0813B921639208B0027F4F8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B0813B941639208B0027F4F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -166,11 +176,17 @@
 			children = (
 				B0813BA11639208B0027F4F8 /* AppDelegate.h */,
 				B0813BA21639208B0027F4F8 /* AppDelegate.m */,
+				B02461BB166F2ADD006AE3DA /* Constant.h */,
 				B0849FD4165F515E00332F1C /* Utility.h */,
 				B0849FD5165F515E00332F1C /* Utility.m */,
+				B02461BD166F3290006AE3DA /* Utility+sina.m */,
+				B02461C0166F32B7006AE3DA /* Utility+socket.m */,
 				B0849FCB165F4F4000332F1C /* MainViewController.h */,
 				B0849FCC165F4F4000332F1C /* MainViewController.m */,
 				B0849FCD165F4F4000332F1C /* MainViewController.xib */,
+				B02461C2166F3AE9006AE3DA /* SettingViewController.h */,
+				B02461C3166F3AE9006AE3DA /* SettingViewController.m */,
+				B02461C4166F3AE9006AE3DA /* SettingViewController.xib */,
 				B0813BAA1639208B0027F4F8 /* ViewController.h */,
 				B0813BAB1639208B0027F4F8 /* ViewController.m */,
 				B08FBF3F16509C4800D555DF /* ViewController+sina.m */,
@@ -327,6 +343,7 @@
 				B08DAB7F1648E215003B43CA /* README.txt in Resources */,
 				B0919A3D165B6FA5007A594B /* MMPSilence.wav in Resources */,
 				B0849FCF165F4F4000332F1C /* MainViewController.xib in Resources */,
+				B02461C6166F3AE9006AE3DA /* SettingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +373,9 @@
 				B0919A30165B53FA007A594B /* MMPDeepSleepPreventer.m in Sources */,
 				B0849FCE165F4F4000332F1C /* MainViewController.m in Sources */,
 				B0849FD6165F515E00332F1C /* Utility.m in Sources */,
+				B02461BE166F3290006AE3DA /* Utility+sina.m in Sources */,
+				B02461C1166F32B7006AE3DA /* Utility+socket.m in Sources */,
+				B02461C5166F3AE9006AE3DA /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

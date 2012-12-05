@@ -7,7 +7,7 @@
 //
 
 #import "MainViewController.h"
-#import "ViewController.h"
+#import "SettingViewController.h"
 
 @interface MainViewController ()
 
@@ -24,21 +24,34 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+- (void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBarHidden = YES;
+    [super viewWillAppear:animated];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)SetAction:(id)sender{
+    SettingViewController* controller = [[SettingViewController alloc] init];
+    controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self.navigationController presentViewController:controller animated:YES completion:nil];
 }
 
--(IBAction)SetAction:(id)sender{
-    ViewController* controller = [[ViewController alloc] init];
-    [self.navigationController pushViewController:controller animated:YES];
+- (IBAction)ConnectToServer:(id)sender{
+    NSString *host = HOST;
+    uint16_t port = PORT;
+    DDLogInfo(@"Connecting to \"%@\" on port %hu...", host, port);
+    NSError *error = nil;
+    if (![[Utility GetInstance].asyncSocket connectToHost:host onPort:port error:&error])
+    {
+        DDLogError(@"Error connecting: %@", error);
+    }
+}
+
+- (IBAction)DisconnectFromServer:(id)sender{
+    NSString *requestStr = [NSString stringWithFormat:@"quit"];
+	NSData *requestData = [requestStr dataUsingEncoding:NSUTF8StringEncoding];
+    [[Utility GetInstance].asyncSocket writeData:requestData withTimeout:-1 tag:0];
+	[[Utility GetInstance].asyncSocket readDataWithTimeout:-1 tag:0];
+    [[Utility GetInstance].asyncSocket disconnect];
 }
 
 @end

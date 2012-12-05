@@ -24,10 +24,15 @@
 
 -(IBAction)postStatusButtonPressed:(id)sender
 {
-    [Utility GetInstance].postStatusText = [[NSString alloc] initWithFormat:@"test post status : %@", [NSDate date]];
-
+    [Utility GetInstance].postStatusText = [[NSString alloc] initWithFormat:@"%@ %@", voiceString, [NSDate date]];
+    
+    [[Utility GetInstance].sinaweibo requestWithURL:@"statuses/update.json"
+                                             params:[NSMutableDictionary dictionaryWithObjectsAndKeys: [Utility GetInstance].postStatusText, @"status", nil]
+                                         httpMethod:@"POST"
+                                           delegate:[Utility GetInstance]];
+    
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                        message:[NSString stringWithFormat:@"Will post status with text \"%@\"",  [Utility GetInstance].postStatusText]
+                                                        message:[NSString stringWithFormat:@"Posting status with text \"%@\"",  [Utility GetInstance].postStatusText]
                                                        delegate:self cancelButtonTitle:@"Cancel"
                                               otherButtonTitles:@"OK", nil];
     alertView.tag = 0;

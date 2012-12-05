@@ -29,21 +29,21 @@
 //    }
 //    [sleepPreventer startPreventSleep];
     
-//    dispatch_queue_t mainQueue = dispatch_get_main_queue();
-//    
-//    asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:mainQueue];
-//    NSString *host = HOST;
-//    uint16_t port = PORT;
-//    
-//    DDLogInfo(@"Connecting to \"%@\" on port %hu...", host, port);
-//    //self.viewController.label.text = @"Connecting...";
-//    
-//    NSError *error = nil;
-//    if (![asyncSocket connectToHost:host onPort:port error:&error])
-//    {
-//        DDLogError(@"Error connecting: %@", error);
-//        //self.viewController.label.text = @"Oops";
-//    }
+    dispatch_queue_t mainQueue = dispatch_get_main_queue();
+
+    asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:mainQueue];
+    NSString *host = HOST;
+    uint16_t port = PORT;
+
+    DDLogInfo(@"Connecting to \"%@\" on port %hu...", host, port);
+    //self.viewController.label.text = @"Connecting...";
+
+    NSError *error = nil;
+    if (![asyncSocket connectToHost:host onPort:port error:&error])
+    {
+        DDLogError(@"Error connecting: %@", error);
+        //self.viewController.label.text = @"Oops";
+    }
     
     //[self resetButtons];
 }
@@ -57,6 +57,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    //self.navigationController.navigationBarHidden = NO;
     
     if ([[Utility GetInstance] isWeiboAvailable]) {
         label.text = [Utility GetInstance].sinaweibo.userID;;
@@ -114,6 +115,8 @@
 	NSString *httpResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	
 	DDLogInfo(@"HTTP Response:\n%@", httpResponse);
+    
+    voiceString = [[NSString alloc] initWithString:httpResponse];
     
     NSString *requestStr = [NSString stringWithFormat:@"Hello received!\r\n"];
 	NSData *requestData = [requestStr dataUsingEncoding:NSUTF8StringEncoding];
@@ -224,5 +227,31 @@
     [self viewWillAppear:NO];
 }
 
+- (IBAction)Done:(id)sender{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)ConnectToServer:(id)sender{
+    dispatch_queue_t mainQueue = dispatch_get_main_queue();
+    if (!asyncSocket) {
+        asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:mainQueue];
+    }
+    NSString *host = HOST;
+    uint16_t port = PORT;
+    DDLogInfo(@"Connecting to \"%@\" on port %hu...", host, port);
+    NSError *error = nil;
+    if (![asyncSocket connectToHost:host onPort:port error:&error])
+    {
+        DDLogError(@"Error connecting: %@", error);
+    }
+}
+
+- (IBAction)DisconnectFromServer:(id)sender{
+    NSString *requestStr = [NSString stringWithFormat:@"quit"];
+	NSData *requestData = [requestStr dataUsingEncoding:NSUTF8StringEncoding];
+    [asyncSocket writeData:requestData withTimeout:-1 tag:0];
+	[asyncSocket readDataWithTimeout:-1 tag:0];
+    [asyncSocket disconnect];
+}
 
 @end

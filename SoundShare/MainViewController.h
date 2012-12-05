@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Utility.h"
 
 @interface MainViewController : UIViewController
 
--(IBAction)SetAction:(id)sender;
+- (IBAction)SetAction:(id)sender;
+- (IBAction)ConnectToServer:(id)sender;
+- (IBAction)DisconnectFromServer:(id)sender;
 
 @end

@@ -12,46 +12,60 @@
 #import "SinaWeiboRequest.h"
 #import "DDLog.h"
 #import "DDTTYLogger.h"
-
-#define NotificationNeedRefresh @"NotificationNeedRefresh"
+#import "GCDAsyncSocket.h"
+#import "MMPDeepSleepPreventer.h"
+#import "Constant.h"
 
 static const int ddLogLevel = LOG_LEVEL_INFO;
 
-//sinaWeibo
-#define kAppKey             @"2817012231"
-#define kAppSecret          @"d8eca57fdd2b82ede044985f06e23c39"
-#define kAppRedirectURI     @"https://api.weibo.com/oauth2/default.html"
-
-#ifndef kAppKey
-#error
-#endif
-
-#ifndef kAppSecret
-#error
-#endif
-
-#ifndef kAppRedirectURI
-#error
-#endif
-
-@interface Utility : NSObject<SinaWeiboDelegate,SinaWeiboRequestDelegate>{
-    ABAddressBookRef addressBook;
-    BOOL _isAddressBookAvailable;
-    
+@interface Utility : NSObject{
+    GCDAsyncSocket *asyncSocket;
+        
     SinaWeibo *sinaweibo;
     BOOL _isWeiboAvailable;
+    
     NSDictionary *userInfo;
     NSArray *statuses;
     NSString *postStatusText;
-    NSString *postImageStatusText;
+    NSString *voiceString;
+    
+    ABAddressBookRef addressBook;
+    BOOL _isAddressBookAvailable;
 }
 
-@property (assign, nonatomic) BOOL isAddressBookAvailable;
-@property (assign, nonatomic) BOOL isWeiboAvailable;
+@property (readonly, nonatomic) GCDAsyncSocket *asyncSocket;
 @property (readonly, nonatomic) SinaWeibo *sinaweibo;
+@property (assign, nonatomic) BOOL isWeiboAvailable;
 @property (strong, nonatomic) NSString * postStatusText;
 @property (assign, nonatomic) ABAddressBookRef addressBook;
+@property (assign, nonatomic) BOOL isAddressBookAvailable;
 
-+(Utility*)GetInstance;
++ (Utility*)GetInstance;
+- (void)parseAction;
+- (void)removeAlertWindow;
 
+@end
+
+@interface Utility(sina)<SinaWeiboDelegate,SinaWeiboRequestDelegate>
+
+- (void)storeAuthData;
+- (void)removeAuthData;
+
+- (void)sinaweiboDidLogIn:(SinaWeibo *)reponseSinaweibo;
+- (void)sinaweiboDidLogOut:(SinaWeibo *)sinaweibo;
+- (void)sinaweiboLogInDidCancel:(SinaWeibo *)sinaweibo;
+- (void)sinaweibo:(SinaWeibo *)sinaweibo logInDidFailWithError:(NSError *)error;
+- (void)sinaweibo:(SinaWeibo *)sinaweibo accessTokenInvalidOrExpired:(NSError *)error;
+
+- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error;
+- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result;
+
+@end
+
+@interface Utility(socket)
+- (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port;
+- (void)socketDidSecure:(GCDAsyncSocket *)sock;
+- (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag;
+- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag;
+- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err;
 @end
