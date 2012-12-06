@@ -56,14 +56,14 @@
 		B02461C2166F3AE9006AE3DA /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		B02461C3166F3AE9006AE3DA /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		B02461C4166F3AE9006AE3DA /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
-		B0813B8E1639208B0027F4F8 /* SoundShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0813B8E1639208B0027F4F8 /* VoiceControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0813B921639208B0027F4F8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B0813B941639208B0027F4F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B0813B961639208B0027F4F8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		B0813B9A1639208B0027F4F8 /* SoundShare-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SoundShare-Info.plist"; sourceTree = "<group>"; };
+		B0813B9A1639208B0027F4F8 /* VoiceControl-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VoiceControl-Info.plist"; sourceTree = "<group>"; };
 		B0813B9C1639208B0027F4F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B0813B9E1639208B0027F4F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B0813BA01639208B0027F4F8 /* SoundShare-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoundShare-Prefix.pch"; sourceTree = "<group>"; };
+		B0813BA01639208B0027F4F8 /* VoiceControl-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VoiceControl-Prefix.pch"; sourceTree = "<group>"; };
 		B0813BA11639208B0027F4F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B0813BA21639208B0027F4F8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B0813BA41639208B0027F4F8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 		B0813B8F1639208B0027F4F8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B0813B8E1639208B0027F4F8 /* SoundShare.app */,
+				B0813B8E1639208B0027F4F8 /* VoiceControl.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -199,10 +199,10 @@
 		B0813B991639208B0027F4F8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B0813B9A1639208B0027F4F8 /* SoundShare-Info.plist */,
+				B0813B9A1639208B0027F4F8 /* VoiceControl-Info.plist */,
 				B0813B9B1639208B0027F4F8 /* InfoPlist.strings */,
 				B0813B9E1639208B0027F4F8 /* main.m */,
-				B0813BA01639208B0027F4F8 /* SoundShare-Prefix.pch */,
+				B0813BA01639208B0027F4F8 /* VoiceControl-Prefix.pch */,
 				B0813BA41639208B0027F4F8 /* Default.png */,
 				B0813BA61639208B0027F4F8 /* Default@2x.png */,
 				B0813BA81639208B0027F4F8 /* Default-568h@2x.png */,
@@ -286,9 +286,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B0813B8D1639208B0027F4F8 /* SoundShare */ = {
+		B0813B8D1639208B0027F4F8 /* VoiceControl */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B0813BB21639208B0027F4F8 /* Build configuration list for PBXNativeTarget "SoundShare" */;
+			buildConfigurationList = B0813BB21639208B0027F4F8 /* Build configuration list for PBXNativeTarget "VoiceControl" */;
 			buildPhases = (
 				B0813B8A1639208B0027F4F8 /* Sources */,
 				B0813B8B1639208B0027F4F8 /* Frameworks */,
@@ -298,9 +298,9 @@
 			);
 			dependencies = (
 			);
-			name = SoundShare;
+			name = VoiceControl;
 			productName = SoundShare;
-			productReference = B0813B8E1639208B0027F4F8 /* SoundShare.app */;
+			productReference = B0813B8E1639208B0027F4F8 /* VoiceControl.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -312,7 +312,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = steven;
 			};
-			buildConfigurationList = B0813B881639208B0027F4F8 /* Build configuration list for PBXProject "SoundShare" */;
+			buildConfigurationList = B0813B881639208B0027F4F8 /* Build configuration list for PBXProject "VoiceControl" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -324,7 +324,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B0813B8D1639208B0027F4F8 /* SoundShare */,
+				B0813B8D1639208B0027F4F8 /* VoiceControl */,
 			);
 		};
 /* End PBXProject section */
@@ -454,9 +454,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SoundShare/SoundShare-Prefix.pch";
-				INFOPLIST_FILE = "SoundShare/SoundShare-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "SoundShare/VoiceControl-Prefix.pch";
+				INFOPLIST_FILE = "SoundShare/VoiceControl-Info.plist";
+				PRODUCT_NAME = VoiceControl;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -465,9 +465,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SoundShare/SoundShare-Prefix.pch";
-				INFOPLIST_FILE = "SoundShare/SoundShare-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "SoundShare/VoiceControl-Prefix.pch";
+				INFOPLIST_FILE = "SoundShare/VoiceControl-Info.plist";
+				PRODUCT_NAME = VoiceControl;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -475,7 +475,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B0813B881639208B0027F4F8 /* Build configuration list for PBXProject "SoundShare" */ = {
+		B0813B881639208B0027F4F8 /* Build configuration list for PBXProject "VoiceControl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B0813BB01639208B0027F4F8 /* Debug */,
@@ -484,7 +484,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B0813BB21639208B0027F4F8 /* Build configuration list for PBXNativeTarget "SoundShare" */ = {
+		B0813BB21639208B0027F4F8 /* Build configuration list for PBXNativeTarget "VoiceControl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B0813BB31639208B0027F4F8 /* Debug */,
