@@ -11,6 +11,7 @@
 		B02461C1166F32B7006AE3DA /* Utility+socket.m in Sources */ = {isa = PBXBuildFile; fileRef = B02461C0166F32B7006AE3DA /* Utility+socket.m */; };
 		B02461C5166F3AE9006AE3DA /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B02461C3166F3AE9006AE3DA /* SettingViewController.m */; };
 		B02461C6166F3AE9006AE3DA /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B02461C4166F3AE9006AE3DA /* SettingViewController.xib */; };
+		B02461C8167086B1006AE3DA /* SocialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B02461C7167086B1006AE3DA /* SocialCell.xib */; };
 		B0813B931639208B0027F4F8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0813B921639208B0027F4F8 /* UIKit.framework */; };
 		B0813B951639208B0027F4F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0813B941639208B0027F4F8 /* Foundation.framework */; };
 		B0813B971639208B0027F4F8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0813B961639208B0027F4F8 /* CoreGraphics.framework */; };
@@ -56,6 +57,7 @@
 		B02461C2166F3AE9006AE3DA /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		B02461C3166F3AE9006AE3DA /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		B02461C4166F3AE9006AE3DA /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		B02461C7167086B1006AE3DA /* SocialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocialCell.xib; sourceTree = "<group>"; };
 		B0813B8E1639208B0027F4F8 /* VoiceControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0813B921639208B0027F4F8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B0813B941639208B0027F4F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -187,6 +189,7 @@
 				B02461C2166F3AE9006AE3DA /* SettingViewController.h */,
 				B02461C3166F3AE9006AE3DA /* SettingViewController.m */,
 				B02461C4166F3AE9006AE3DA /* SettingViewController.xib */,
+				B02461C7167086B1006AE3DA /* SocialCell.xib */,
 				B0813BAA1639208B0027F4F8 /* ViewController.h */,
 				B0813BAB1639208B0027F4F8 /* ViewController.m */,
 				B08FBF3F16509C4800D555DF /* ViewController+sina.m */,
@@ -344,6 +347,7 @@
 				B0919A3D165B6FA5007A594B /* MMPSilence.wav in Resources */,
 				B0849FCF165F4F4000332F1C /* MainViewController.xib in Resources */,
 				B02461C6166F3AE9006AE3DA /* SettingViewController.xib in Resources */,
+				B02461C8167086B1006AE3DA /* SocialCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

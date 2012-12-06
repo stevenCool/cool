@@ -11,5 +11,7 @@
 @interface SettingViewController : UITableViewController
 
 - (IBAction)Done:(id)sender;
+- (void)sinaPressed;
+- (void)NotifyRefresh:(NSNotification *)notification;
 
 @end
